@@ -1,0 +1,321 @@
+[
+    {
+        "id": "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+        "image": "images/products/acer-acer-travelmate-b118-n4020-4gb-64gb-11-6-win10-pro-education-laptop.png",
+        "name": "Acer Window 10 Laptop",
+        "rating": {
+            "stars": 4.5,
+            "count": 87
+        },
+        "priceCents": 1090,
+        "description": "Acer-acer travelmate b118-n4020-4gb-64gb-11-6 window 10pro Education-laptop"
+    },
+    {
+        "id": "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+        "image": "images/products/alienware-components-alienware-wired-gaming-mouse.jpg",
+        "name": "Alienware Mouse",
+        "rating": {
+            "stars": 4,
+            "count": 127
+        },
+        "priceCents": 2095,
+        "description": "Alienware components, alienware wired gaming mouse."
+    },
+    {
+        "id": "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
+        "image": "images/products/amazon-tablets-and-related-products-fire-7-tablet-7-display-16gb-black.png",
+        "name": "Amazon Tablets",
+        "rating": {
+            "stars": 4.5,
+            "count": 56
+        },
+        "priceCents": 799,
+        "description": "Amazon tablet fire7 tablet7, display 16gb, black."
+    },
+    {
+        "id": "54e0eccd-8f36-462b-b68a-8182611d9add",
+        "image": "images/products/hp-hp-stream-11-ak0508sa-11-6-laptop-intel-celeron-32-gb-emmc-pink.png",
+        "name": "Hp Laptop Intel",
+        "rating": {
+            "stars": 5,
+            "count": 2197
+        },
+        "priceCents": 1899,
+        "description": "Hp stream-11 ak0508sa 11 6 laptop-intel, celeron-32-gb-emmc, pink."
+    },
+    {
+        "id": "3ebe75dc-64d2-4137-8860-1f5a963e534b",
+        "image": "images/products/hp-laptops-hp-stream-11-ak0516sa-11-laptop-intel-celeron-64-gb-emmc-blue.png",
+        "name": "Hp Laptop stream",
+        "rating": {
+            "stars": 4,
+            "count": 37
+        },
+        "priceCents": 2067,
+        "description": "Hp stream-11 ak0516sa-1-laptop-intel celeron 64gb emmc, blue"
+    },
+    {
+        "id": "8c9c52b5-5a19-4bcb-a5d1-158a74287c53",
+        "image": "images/products/hp-omen-hp-omen-15-dh1005na-15-dh1005sa-15-6-inch-full-hd-144-hz-gaming-laptop-intel-core-i7-10750h-16-gb-ram-1-tb-ssd-nvidia-geforce-rtx-2060-6-gb-dedicated-graphics-windows-10-home.png",
+        "name": "Hp Omen, Gaming Laptop",
+        "rating": {
+            "stars": 4.5,
+            "count": 175
+        },
+        "priceCents": 3499,
+        "description": "Hp omen 15, full hd,144hz,gaming laptop, intel-core: i7-10750h, 16gbram 1tb-ssd Nvidia-geforce-rtx 6-gb dedicated graphics windows10"
+    },
+    {
+        "id": "dd82ca78-a18b-4e2a-9250-31e67412f98d",
+        "image": "images/products/hp-omen-monitors-omen-34c-34-wqhd-curved-gaming-monitor-1ms-response-165hz-refresh.png",
+        "name": "Hp Omen Curved Monitor",
+        "rating": {
+            "stars": 4.5,
+            "count": 317
+        },
+        "priceCents": 2400,
+        "description": "hp omen monitors, omen34c 34wqhd , curved gaming monitor, 1ms response,165hz."
+    },
+    {
+        "id": "77919bbe-0e56-475b-adde-4f24dfed3a04",
+        "image": "images/products/hyperx-headphones-hyperx-cloud-stinger-2-core-xbox-gaming-headset-black.jpg",
+        "name": "Hyperx Headphone",
+        "rating": {
+            "stars": 4.5,
+            "count": 144
+        },
+        "priceCents": 3599,
+        "description": "Hyperx headphones hyperx cloud stinger 2core xbox gaming headset black"
+    },
+    {
+        "id": "3fdfe8d6-9a15-4979-b459-585b0d0545b9",
+        "image": "images/products/intel-intel-core-i3-10100f-3-6-ghz-4-cores-8-threads-6-mb-cache-lga1200-socket-box.png",
+        "name": "Intel Core",
+        "rating": {
+            "stars": 4.5,
+            "count": 305
+        },
+        "priceCents": 2899,
+        "description": "intel: intel core i3 10100f-3 6-ghz 4 cores 8 threads 6mb cache-lga1200 socket-box."
+    },
+    {
+        "id": "58b4fc92-e98c-42aa-8c55-b6b79996769a",
+        "image": "images/products/jbl-headphones-jbl-go-3-wireless-bluetooth-portable-speaker-with-integrated-loop-and-usb-c-charging-cable-black.jpg",
+        "name": "JBL Headphone",
+        "rating": {
+            "stars": 4,
+            "count": 89
+        },
+        "priceCents": 3390,
+        "description": "wireless bluetooth portable speaker with integrated loop and usb c charging cable black."
+    },
+    {
+        "id": "5968897c-4d27-4872-89f6-5bcb052746d7",
+        "image": "images/products/jbl-headphones-jbl-tune-520-bt-wireless-on-ear-headphones-up-to-57-hour-battery-life-white.jpg",
+        "name": "JBL headphones",
+        "rating": {
+            "stars": 4.5,
+            "count": 235
+        },
+        "priceCents": 2070,
+        "description": "jbl tune 520 bt, wireless, on ear headphones up to 57hour battery life, white."
+    },
+    {
+        "id": "aad29d11-ea98-41ee-9285-b916638cac4a",
+        "image": "images/products/kolac-kolac-klc-af100-mobile-ifp-and-tv-stand.jpg",
+        "name": "Kolac",
+        "rating": {
+            "stars": 4.5,
+            "count": 30
+        },
+        "priceCents": 1560,
+        "description": "kolac klc af100 mobile ifp and tv stand.jpg"
+    },
+    {
+        "id": "04701903-bc79-49c6-bc11-1af7e3651358",
+        "image": "images/products/logitech-components-logitech-g413-se-tkl-mechanical-gaming-keyboard.png",
+        "name": "Gaming keyword",
+        "rating": {
+            "stars": 4.5,
+            "count": 562
+        },
+        "priceCents": 2499,
+        "description": "components logitech g413 se tkl, mechanical gaming keyboard"
+    },
+    {
+        "id": "901eb2ca-386d-432e-82f0-6fb1ee7bf969",
+        "image": "images/products/logitech-headphones-logitech-g435-ligthspeed-bluetooth-wireless-gaming-headset-.jpg",
+        "name": "Logitech Headphone",
+        "rating": {
+            "stars": 4.5,
+            "count": 232
+        },
+        "priceCents": 4599,
+        "description": "g435 ligthspeed bluetooth wireless gaming headset"
+    },
+    {
+        "id": "82bb68d7-ebc9-476a-989c-c78a40ee5cd9",
+        "image": "images/products/msi-msi-geforce-gt-730-n730k-2gd3h-lp-graphics-card-2gb-ddr3-vga-dvi-d-hdmi-htpc.png",
+        "name": "MSI hdmi",
+        "rating": {
+            "stars": 4,
+            "count": 160
+        },
+        "priceCents": 1699,
+        "description": "geforce gt 730bn730k 2gd3h lp graphics card 2gbbvddr3 vga dvi dbhdmi htpc"
+    },
+    {
+        "id": "c2a82c5e-aff4-435f-9975-517cfaba2ece",
+        "image": "images/products/samsung-others-akg-y500-wireless-headphone.png",
+        "name": "Samsung Headphone",
+        "rating": {
+            "stars": 5,
+            "count": 846
+        },
+        "priceCents": 3074,
+        "description": "akgy500 wireless headphone"
+    },
+    {
+        "id": "6b07d4e7-f540-454e-8a1e-363f25dbae7d",
+        "image": "images/products/services_web.jpg",
+        "name": "Ultra Soft Laptop",
+        "rating": {
+            "stars": 4,
+            "count": 99
+        },
+        "priceCents": 2374,
+        "description": ""
+    },
+    {
+        "id": "a82c6bac-3067-4e68-a5ba-d827ac0be010",
+        "image": "images/products/smaat-cables-converters-and-adapters-smaat-2m-high-speed-hdmi-to-hdmi-cable-black.jpg",
+        "name": "Smaat Cable, converter and adapter",
+        "rating": {
+            "stars": 4,
+            "count": 215
+        },
+        "priceCents": 2200,
+        "description": "smaat 2m high speed hdmi to hdmi cable black."
+    },
+    {
+        "id": "e4f64a65-1377-42bc-89a5-e572d19252e2",
+        "image": "images/products/smaat-interactive-products-and-accessories-smaat-65-4k-uhd-interactive-flat-panel-with-in-built-4k-13mp-camera.png",
+        "name": "Smaat Camera",
+        "rating": {
+            "stars": 4.5,
+            "count": 52
+        },
+        "priceCents": 1799,
+        "description": "smaat 65 4k uhd, interactive flat panel with in built 4k 13mp camera"
+    },
+    {
+        "id": "b0f17cc5-8b40-4ca5-9142-b61fe3d98c85",
+        "image": "images/products/smaat-interactive-products-and-accessories-smaat-75-4k-uhd-interactive-flat-panel-with-in-built-4k-13mp-camera.png",
+        "name": "Smaat Flat Panel Camera",
+        "rating": {
+            "stars": 4.5,
+            "count": 2465
+        },
+        "priceCents": 1374,
+        "description": "smaat 75 4k uhd interactive flat panel with in built 4k 13mp camera."
+    },
+    {
+        "id": "a93a101d-79ef-4cf3-a6cf-6dbe532a1b4a",
+        "image": "images/products/smaat-smaat-sm220-wired-usb-3-button-optical-mouse-black.jpg",
+        "name": "Smaat wired Mouse",
+        "rating": {
+            "stars": 4.5,
+            "count": 119
+        },
+        "priceCents": 1250,
+        "description": "sm220 wired-l usb 3 button optical mouse black."
+    },
+    {
+        "id": "4f4fbcc2-4e72-45cc-935c-9e13d79cc57f",
+        "image": "images/products/smaat-smaat-sma1003-micro-atx-pc-case-and-200w-ps.jpgg",
+        "name": "Central processing unit CPU",
+        "rating": {
+            "stars": 4,
+            "count": 326
+        },
+        "priceCents": 2640,
+        "description": "smaat sma1003 micro atx pcbcase and 200w ps."
+    },
+    {
+        "id": "8b5a2ee1-6055-422a-a666-b34ba28b76d4",
+        "image": "images/products/smaat-smaat-spb2082fbd-fast-charging-20000mah-slim-power-bank-with-digital-display- (1).png.jpg",
+        "name": "Power Bank with Digital Display./",
+        "rating": {
+            "stars": 4.5,
+            "count": 2556
+        },
+        "priceCents": 1599,
+        "description": "fast charging 20000mah , slim power bank with digital display.png"
+    },
+    {
+        "id": "b86ddc8b-3501-4b17-9889-a3bad6fb585f",
+        "image": "images/products/smaat-smaat-spb2082fbd-fast-charging-20000mah-slim-power-bank-with-digital-display.png",
+        "name": "Slim Power Bank",
+        "rating": {
+            "stars": 4.5,
+            "count": 2286
+        },
+        "priceCents": 8300,
+        "description": "fastbcharging 20000mah slim power bank with digital display"
+    },
+    {
+        "id": "19c6a64a-5463-4d45-9af8-e41140a4100c",
+        "image": "images/products/smaat-smaat-spc5081sd-ops-intel-corei5-8gb-256gb-win-11-pro.jpg",
+        "name": "Smaat Inter corei5",
+        "rating": {
+            "stars": 4,
+            "count": 456
+        },
+        "priceCents": 2399,
+        "description": "smaat spc5081sd ops intel corei5 8gb 256gb win11 pro"
+    },
+    {
+        "id": "d2785924-743d-49b3-8f03-ec258e640503",
+        "image": "images/products/sony-headphones-sony-srs-xb100-wireless-bluetooth-portable-lightweight-compact-outdoor-travel-speaker-white.jpg",
+        "name": "Sony Headphone",
+        "rating": {
+            "stars": 5,
+            "count": 83
+        },
+        "priceCents": 1250,
+        "description": "wireless bluetooth portable lightweight compact outdoor travel speaker white"
+    },
+    {
+        "id": "ee1f7c56-f977-40a4-9642-12ba5072e2b0",
+        "image": "images/products/tp-link-routers-tp-link-300-mbps-wireless-n-usb-vdsl-adsl-modem-router-l.jpg",
+        "name": "Links Router",
+        "rating": {
+            "stars": 4.5,
+            "count": 9017
+        },
+        "priceCents": 2290,
+        "description": "300mbps, wireless usb vdsl adsl, modem router."
+    },
+    {
+        "id": "1c079479-8586-494f-ab53-219325432536",
+        "image": "images/products/tp-link-routers-tp-link-archer-c80-ac1900-mu-mimo-dual-band-wireless-gaming-router-wi-fi-speed-up-to-1300-mbps-5-ghz-600-mbps-2-4-ghz-supports-parental-control-guest-wi-fi.jpg",
+        "name": "WIFI wireless gaming router",
+        "rating": {
+            "stars": 4,
+            "count": 229
+        },
+        "priceCents": 3890,
+        "description": "mimo dual band wireless gaming router wi-fi speed up to 1300mbps 5ghz 600mbps 24ghz supports parental control guest wi-fi"
+    },
+    {
+        "id": "4df68c27-fd59-4a6a-bbd1-e754ddb6d53c",
+        "image": "images/products/tp-link-routers-tp-link-tl-wr841n-300mbps-wireless-n-wifi-router.jpg",
+        "name": "Wi-fi",
+        "rating": {
+            "stars": 3.5,
+            "count": 42
+        },
+        "priceCents": 1690,
+        "description": "wr841n 300mbps wireless and  wifi router."
+    }
+]
