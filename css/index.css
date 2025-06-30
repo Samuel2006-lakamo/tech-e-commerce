@@ -131,6 +131,9 @@ body {
 }
 .menu-toggle {
     display: none;
+    background: transparent;
+    color: #f8f9fa;
+    border: none;
 }
 .header .nav-menu {
     display: flex;
