@@ -55,7 +55,7 @@ body {
     z-index: 100;
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    background-color: rgba(0, 0, 5, 0.6);
+    background-color: rgba(0, 0, 0, 0.4)/* Fully opaque */;
     border-bottom: 1px solid goldenrod;
 }
 
