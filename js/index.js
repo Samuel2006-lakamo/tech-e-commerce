@@ -5,6 +5,9 @@ const renderProducts = async () => {
         const products = await getProducts();
         let html = "";
         let featureHtml = "";
+        const featureProductEl = document.querySelector("#feature-product");
+        const allProductEl = document.querySelector("#all-product");
+        
         const featuredProduct = products.filter(product => product.isFeatured);
         featuredProduct.forEach(product => {
             featureHtml += `
@@ -16,12 +19,12 @@ const renderProducts = async () => {
         <h3 class="product-price">€ ${(product.priceCents / 100).toFixed(
             2
         )}</h3>  
-        <button class="btn add-to-cart-btn">Add to Cart</button>  
+        <button class="btn add-to-cart-btn" >Add to Cart</button>  
       </div>  
     </div>  
   `;
         });
-        document.querySelector("#feature-product").innerHTML = featureHtml;
+        
 
         products.forEach(product => {
             html += `  
@@ -38,8 +41,23 @@ const renderProducts = async () => {
     </div>  
   `;
         });
+        
 
-        document.querySelector("#all-product").innerHTML = html;
+        if (featureProductEl) {
+            featureProductEl.innerHTML = featureHtml;
+        }
+
+        if (allProductEl) {
+            allProductEl.innerHTML = html;
+        }
+
+        
+
+        document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                addToCart();
+            });
+        });
     } catch (err) {
         console.error("Failed to render products:", err);
     }
@@ -84,3 +102,9 @@ document.addEventListener("touchend", e => {
         document.body.classList.add("no-scroll");
     }
 });
+
+const cart = [];
+function addToCart() {
+    console.log("added");
+}
+
