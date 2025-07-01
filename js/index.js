@@ -4,9 +4,25 @@ const renderProducts = async () => {
     try {
         const products = await getProducts();
         let html = "";
-        products.filter(product => {
-           const featuredProduct = product.isFeartured == false;
+        let featureHtml = "";
+        const featuredProduct = products.filter(product => product.isFeatured);
+        featuredProduct.forEach(product => {
+            featureHtml += `
+          <div class="product-card">  
+      <img src="./${product.image}" alt="${product.name}" />  
+      <div class="grid-content">  
+        <h2 class="product-heading">${product.name}</h2>  
+        <p class="product-info">${product.description}</p>  
+        <h3 class="product-price">€ ${(product.priceCents / 100).toFixed(
+            2
+        )}</h3>  
+        <button class="btn add-to-cart-btn">Add to Cart</button>  
+      </div>  
+    </div>  
+  `;
         });
+        document.querySelector("#feature-product").innerHTML = featureHtml;
+
         products.forEach(product => {
             html += `  
     <div class="product-card">  
@@ -23,7 +39,7 @@ const renderProducts = async () => {
   `;
         });
 
-        document.querySelector(".product-grid").innerHTML = html;
+        document.querySelector("#all-product").innerHTML = html;
     } catch (err) {
         console.error("Failed to render products:", err);
     }

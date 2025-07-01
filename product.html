@@ -15,7 +15,8 @@
         <title>products</title>
     </head>
     <body>
-        <section class="hero-section">            <header class="header">
+        <section class="hero-section">
+            <header class="header">
                 <button class="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -36,10 +37,9 @@
                     </button>
                 </div>
                 <div class="sidebar hidden">
-                  <div class="close">
-                    <i class="fas fa-close">
-                    </i>
-                  </div>
+                    <div class="close">
+                        <i class="fas fa-close"> </i>
+                    </div>
                     <div class="sidebar-header">
                         <div class="sidebar-pro">
                             <i class="fas fa-user"> </i>
@@ -64,80 +64,35 @@
                         <a href="#cart">
                             <i class="fas fa-shopping-cart"></i> Cart (3)</a
                         >
-
                     </nav>
-                    
+
                     <div class="sidebar-footer">
                         <span href="#cart" class="sign-in">
                             Sign-in/Login
-                            <a class="" href="#">                            <i class="fas fa-arrow-right"></i>
+                            <a class="" href="#">
+                                <i class="fas fa-arrow-right"></i>
                             </a>
-
-                       
                         </span>
                     </div>
                 </div>
 
-
-
                 <nav class="nav-menu">
                     <div class="sign-in">
-                        <i
-                            class="fas fa-user"
-                            
-                        ></i>
+                        <i class="fas fa-user"></i>
                     </div>
                     <div class="cart">
-                    <img src="images/icon/cart-icon.png" />
-                    <p class="cart-value">3</p>
+                        <img src="images/icon/cart-icon.png" />
+                        <p class="cart-value">3</p>
                     </div>
                 </nav>
             </header>
-
         </section>
-                <div class="overlay" id="overlay">
-                </div>
+        <div class="overlay" id="overlay"></div>
         <section class="main">
             <h1 class="">Featured Products</h1>
-            <div class="featured-product">
-                <div class="product-card">
-                    <img class="" src="img/laptop.png" />
-                    <div class="grid-content">
-                        <h2 class="product-heading">Laptop (curve mirror)</h2>
-                        <p class="product-info">
-                            Laptop with high ram and curve mirror
-                        </p>
-                        <h3 class="product-price">€ 80.89</h3>
-                        <button class="btn add-to-cart-btn">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img class="" src="img/laptop.png" />
-                    <div class="grid-content">
-                        <h2 class="product-heading">Laptop (curve mirror)</h2>
-                        <p class="product-info">
-                            Laptop with high ram and curve mirror
-                        </p>
-                        <h3 class="product-price">€ 80.89</h3>
-                        <button class="btn add-to-cart-btn">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img class="" src="img/laptop.png" />
-                    <div class="grid-content">
-                        <h2 class="product-heading">Laptop (curve mirror)</h2>
-                        <p class="product-info">
-                            Laptop with high ram and curve mirror
-                        </p>
-                        <h3 class="product-price">€ 80.89</h3>
-                        <button class="btn add-to-cart-btn">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            <h1 class="">
-              Products</h1>
-                          <div class="product-grid">
-            </div>
+            <div class="product-grid" id="feature-product"></div>
+            <h1 class="">Products</h1>
+            <div class="product-grid" id="all-product"></div>
         </section>
         <footer class="">
             <div class="footer">
@@ -192,8 +147,7 @@
             </div>
         </footer>
         <p class="copyright">© 2025 TechNest</p>
-        
-        <script type="module" src="js/index.js">
-        </script>
+
+        <script type="module" src="js/index.js"></script>
     </body>
 </html>
