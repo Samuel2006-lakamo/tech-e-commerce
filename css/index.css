@@ -289,6 +289,47 @@ section.main .product-card {
     width: 70%;
     text-align: center;
 }
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+.rating img{
+  width: 50%;
+}
+.rating p{
+  font-size: 15px;
+  color: var(--primary-color);
+}
+.added{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  gap: 5px;
+  padding-bottom: 0;
+  transform: translateY(-20px);
+  transition:transform 0.3 ease-out;
+}
+.added img{
+  width: 20px;
+  padding: 0;
+}
+.added p{
+  font-size: 13px;
+  font-weight: bold;
+  padding-bottom:  5px;
+  color: var(--accent-color);
+}
+.added.show{
+  display: flex;
+  transform: translateY(0);
+  transition:transform 0.3 ease-out;
+}
+.btn.add-to-cart-btn{
+  margin-top: 0;
+}
 .about-us {
     padding: 20px 7%;
 }
@@ -580,7 +621,7 @@ footer {
     .overlay {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.5);
         display: none;
         z-index: 5;
     }

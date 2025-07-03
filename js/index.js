@@ -1,5 +1,6 @@
-import { getProducts } from "./products.js";
-
+import { getProducts,productId } from  "./products.js";
+import { cart,itemExist } from  "./cart.js";
+const added = document.querySelector(".added");
 const renderProducts = async () => {
     try {
         const products = await getProducts();
@@ -7,7 +8,7 @@ const renderProducts = async () => {
         let featureHtml = "";
         const featureProductEl = document.querySelector("#feature-product");
         const allProductEl = document.querySelector("#all-product");
-        
+
         const featuredProduct = products.filter(product => product.isFeatured);
         featuredProduct.forEach(product => {
             featureHtml += `
@@ -16,15 +17,27 @@ const renderProducts = async () => {
       <div class="grid-content">  
         <h2 class="product-heading">${product.name}</h2>  
         <p class="product-info">${product.description}</p>  
+
+<div class="rating">
+        <img class="rating-star" src="../images/rating/rating-${product.rating.stars * 10}.png"/>
+        <p>${product.rating.count}</p>
+</div>
         <h3 class="product-price">€ ${(product.priceCents / 100).toFixed(
             2
         )}</h3>  
-        <button class="btn add-to-cart-btn" >Add to Cart</button>  
+        
+                <div class="added">
+        <img class="" src="../images/icon/checkmark.png"/>
+        <p>Added<p/>
+        </div>
+        <button class="btn add-to-cart-btn"
+        data-id="${product.id}"
+        
+        ">Add to Cart</button>  
       </div>  
     </div>  
   `;
         });
-        
 
         products.forEach(product => {
             html += `  
@@ -32,16 +45,26 @@ const renderProducts = async () => {
       <img src="./${product.image}" alt="${product.name}" />  
       <div class="grid-content">  
         <h2 class="product-heading">${product.name}</h2>  
-        <p class="product-info">${product.description}</p>  
+        <p class="product-info">${product.description}</p>  <div class="rating">
+        <img class="rating-star" src="../images/rating/rating-${product.rating.stars * 10}.png"/>
+        <p>${product.rating.count}<p/>
+</div>
         <h3 class="product-price">€ ${(product.priceCents / 100).toFixed(
             2
         )}</h3>  
-        <button class="btn add-to-cart-btn">Add to Cart</button>  
+
+        <div class="added">
+        <img class="" src="../images/icon/checkmark.png"/>
+        <p>Added</p>
+        </div>
+        <button class="btn add-to-cart-btn" 
+        data-id="${product.id}"
+        
+        ">Add to Cart</button>  
       </div>  
     </div>  
   `;
         });
-        
 
         if (featureProductEl) {
             featureProductEl.innerHTML = featureHtml;
@@ -50,14 +73,13 @@ const renderProducts = async () => {
         if (allProductEl) {
             allProductEl.innerHTML = html;
         }
+document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
+  btn.addEventListener("click", async (e) => {
+    const itemId = e.target.dataset.id;
+    await addToCart(itemId, e.target); // Pass the button itself
+  });
+});
 
-        
-
-        document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
-            btn.addEventListener("click", () => {
-                addToCart();
-            });
-        });
     } catch (err) {
         console.error("Failed to render products:", err);
     }
@@ -96,15 +118,42 @@ document.addEventListener("touchend", e => {
         overlay.classList.remove("show");
         document.body.classList.remove("no-scroll");
     }
-    if (startX < 30 && endX - startX > 50) {
+    if (startX < 70 && endX - startX > 50) {
         sidebar.classList.remove("hidden");
         overlay.classList.add("show");
         document.body.classList.add("no-scroll");
     }
 });
 
-const cart = [];
-function addToCart() {
-    console.log("added");
+const timeoutMap = new Map();
+async function addToCart(id, btn) {
+  const matchingItem = await productId(id);
+if (!matchingItem) {
+  throw new Error(`Item with id ${id} is not found`);
+  return
+}
+  const addedMessage = btn.parentElement.querySelector(".added");
+
+  addedMessage.classList.add("show");
+  if (timeoutMap.has(id)) {
+  clearTimeout(timeoutMap.get(id));
 }
 
+const timeoutId =  setTimeout(function() {
+    addedMessage.classList.remove("show");
+  }, 2000);
+  timeoutMap.set(id,timeoutId)
+  const existingItem = itemExist(id);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    const name = matchingItem.name;
+  cart.push({
+    id: matchingItem.id,
+    name,
+    quantity: 1
+  })
+  }
+
+  console.log(cart);
+}
