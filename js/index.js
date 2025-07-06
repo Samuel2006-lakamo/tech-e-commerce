@@ -365,7 +365,7 @@ const setCurrentYear = () => {
     yearElement.textContent = new Date().getFullYear();
   }
 };
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
     const quantitySelectors = document.querySelectorAll(".quantity-selector");
 
     quantitySelectors.forEach(selector => {
@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
             quantityDisplay.textContent = quantity;
         });
     });
-});
+});*/
 const init = () => {
   initAuthGuard();
   setCurrentYear();
