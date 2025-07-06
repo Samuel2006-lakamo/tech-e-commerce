@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="api/alerts.css" />
+
+        <title>TechNest</title>
+    </head>
+    <body>
+        <!-- Alert System จะจัดการ notifications เอง -->
+
+        <section class="hero-section">
+            <header class="header">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo" href="index.html" id="TechNestLogo">
+                    <a class="" href="index.html">
+                        Tech<span class="" id="TechNestColored">N</span>est
+                    </a>
+                </div>
+                <div class="search">
+                    <input
+                        class="search-input"
+                        type="search"
+                        placeholder="Search..."
+                        autofocus
+                    />
+                    <button type="submit" class="btn search-btn">
+                        <i class="fas fa-search"> </i>
+                    </button>
+                </div>
+
+                <div class="sidebar hidden">
+                    <div class="close">
+                        <i class="fas fa-close"> </i>
+                    </div>
+                    <div class="sidebar-header">
+                        <div class="sidebar-pro">
+                            <i class="fas fa-user"> </i>
+                            <div class="profile login-only">Your Profile</div>
+                            <div class="profile user-only" style="display: none;">
+                                <span id="sidebarUser">User</span>
+                            </div>
+                        </div>
+                        <div class="sidebar-logo">
+                            <a class="" href="index.html">
+                                Tech<span>N</span>est
+                            </a>
+                        </div>
+                    </div>
+
+                    <nav class="sidebar-menu">
+                        <a href="#"><i class="fas fa-home"></i> Home</a>
+                        <a href="#products"
+                            ><i class="fas fa-box"></i> Products</a
+                        >
+                        <a href="#about"
+                            ><i class="fas fa-info-circle"></i> About</a
+                        >
+
+                        <a href="#cart">
+                            <i class="fas fa-shopping-cart"></i> Cart (3)</a
+                        >
+                    </nav>
+
+                    <div class="sidebar-footer">
+                        <span class="sign-in login-only">
+                            <a href="Login.html">
+                                Sign-in/Login
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </span>
+                        <span class="user-actions user-only" style="display: none;">
+                            <button class="logout-btn">
+                                Logout
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
+                            <button class="delete-account-btn" onclick="deleteAccount()">
+                                Delete Account
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <nav class="nav-menu">
+                    <div class="sign-in login-only">
+                        <i class="fas fa-user"></i>
+                        <a href="Login.html">Sign In</a>
+                    </div>
+                    <div class="user-profile user-only" style="display: none;">
+                        <i class="fas fa-user"></i>
+                        <span id="navbarUser">User</span>
+                        <button class="logout-btn">Logout</button>
+                        <button class="delete-account-btn" onclick="deleteAccount()">Delete Account</button>
+                    </div>
+                    <div class="cart">
+                        <img src="images/icon/cart-icon.png" />
+                        <p class="cart-value">3</p>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="hero-content">
+                <div class="cover-heading">
+                    <h1 class="">
+                        Find The Perfect Electronics at the Best Prices.
+                    </h1>
+                    <p class="body">
+                        Brownse our Collection of high Quality Electronics &
+                        Accessories
+                    </p>
+                    <button class="shop-btn btn">
+                        <a class="" href="product.html"> Shop Now</a>
+                    </button>
+                </div>
+            </div>
+        </section>
+                        <div class="overlay" id="overlay">
+                </div>
+        <section class="main">
+            <h1 class="">Featured Products</h1>
+            <div class="product-grid" id="feature-product">
+            </div>
+        </section>
+        <section class="about-us">
+            <h1 class="heading">Why Choose Us</h1>
+            <div class="about-grid">
+                <div class="about-item">
+                    <div class="icon-bg">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="item-content">
+                        <h2 class="item-heading">Fast Delivery</h2>
+                        <p class="item-info">
+                            Fast and releable delivery: we deliver with the
+                            speed of lightning.
+                        </p>
+                    </div>
+                </div>
+                <div class="about-item">
+                    <div class="icon-bg">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <div class="item-content">
+                        <h2 class="item-heading">Affordable Price</h2>
+                        <p class="item-info">
+                            Price tag are at the cheapest and best form for the
+                            quality.
+                        </p>
+                    </div>
+                </div>
+                <div class="about-item">
+                    <div class="icon-bg">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="item-content">
+                        <h2 class="item-heading">Trusted Branded</h2>
+                        <p class="item-info">
+                            Trusted by many. High Quality product.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="">
+            <div class="footer">
+                <div class="contact">
+                    <h1 class="">Contact Us</h1>
+                    <ul class="contact-list">
+                        <li class="email">
+                            <i class="fas fa-envelope"></i>
+                            <a class=""> lakamosamuel7@gmail.com </a>
+                        </li>
+                        <li class="">
+                            <p class="">
+                                <i class="fas fa-phone"></i> +(234) 91 3270-
+                                9107
+                            </p>
+                        </li>
+                        <li class="">
+                            <p class="">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Sabon wuse, Niger State. Nigeria
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="service">
+                    <h1 class="service">Our Service</h1>
+                    <div class="service-content">
+                        <p>Shipping</p>
+                        <p>Returns</p>
+                    </div>
+                </div>
+                <div class="support">
+                    <h1 class="">Support Us</h1>
+                    <div class="support-content">
+                        <span class="contact-support">
+                            <a class=""> Contact Us </a>
+                        </span>
+
+                        <span class="freq-ask">
+                            <a class=""> FAQS </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="follow">
+                <h1 class="">Tech<span class="">N</span>est</h1>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i> </a>
+                    <a href="#"><i class="fab fa-whatsapp"></i> </a>
+                </div>
+            </div>
+        </footer>
+        <p class="copyright">© <span id="currentYear"></span> TechNest</p>
+        
+        <script src="api/alert-handler.js"></script>
+        <script src="js/auth-guard.js" type="module"></script>
+        <script src="js/index.js" type="module"></script>
+        <script src="api/cursor-behavior.js"></script>
+    </body>
+</html>

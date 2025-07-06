@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNest Login</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="api/alerts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+    <nav id="navbar">
+        <div class="navbarContent">
+            <span id="navbarUser" style="color: var(--primaryTextBG); font-weight: 600;"></span>
+            <button id="navbarSignOut" onclick="logout()">Sign Out</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="logo">
+            <h1 id="loginTitle">Login</h1>
+        </div>
+
+        <div id="loginForm" class="form active">
+            <div class="input-group">
+                <input type="email" id="loginEmail" class="input" placeholder="Email" required autocomplete="off"
+                    tabindex="1">
+            </div>
+            <div class="input-group">
+                <input type="password" id="loginPassword" class="input" placeholder="Password" required
+                    autocomplete="off" tabindex="2">
+            </div>
+            <button class="btn" onclick="login()" id="loginBtn" tabindex="3">Sign In</button>
+            <div class="link">
+                <a href="#" onclick="showRegister()" tabindex="4">Create account</a>
+            </div>
+        </div>
+
+        <div id="registerForm" class="form">
+            <div class="input-group">
+                <input type="text" id="registerName" class="input" placeholder="Name" required autocomplete="off"
+                    tabindex="1">
+            </div>
+            <div class="input-group">
+                <input type="email" id="registerEmail" class="input" placeholder="Email" required autocomplete="off"
+                    tabindex="2">
+            </div>
+            <div class="input-group">
+                <input type="password" id="registerPassword" class="input" placeholder="Password" required
+                    autocomplete="off" tabindex="3">
+            </div>
+            <div class="strength-indicator">
+                <div class="strength-fill" id="strengthFill"></div>
+            </div>
+            <button class="btn" onclick="register()" id="registerBtn" tabindex="4">Register</button>
+            <div class="link">
+                <a href="#" onclick="showLogin()" tabindex="5">Already have account?</a>
+            </div>
+        </div>
+
+        <div id="dashboard" class="dashboard">
+            <div class="user-card">
+                <div class="avatar" id="userAvatar"></div>
+                <h2 id="userName"></h2>
+                <div class="user-info">
+                    <div class="info-item">
+                        <span class="info-label">Email:</span>
+                        <span id="userEmail"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Joined:</span>
+                        <span id="joinDate"></span>
+                    </div>
+                </div>
+            </div>
+            <button class="btn" onclick="logout()" tabindex="1">Logout</button>
+        </div>
+    </div>
+
+    <script src="js/auth-guard.js" type="module"></script>
+    <script src="js/login.js" type="module"></script>
+    <script src="api/cursor-behavior.js"></script>
+    <script src="api/alert-handler.js"></script>
+    <script type="module">
+        import { logout, showLogin, showRegister, login, register, shakeInput } from './js/login.js';
+        window.logout = logout;
+        window.showLogin = showLogin;
+        window.showRegister = showRegister;
+        window.login = login;
+        window.register = register;
+        window.shakeInput = shakeInput;
+    </script>
+</body>
+
+</html>

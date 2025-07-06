@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    font-family: "Inter","Manrope", "arial", Sans-Serif;
+}
+
+:root {
+    --primaryBackground: #faf9f6;
+    --primaryTextBG: #000000;
+    --primaryRegularText: #2d2d2d;
+    --primaryFormBorder: #e5e5e7;
+    --primaryFormBG: #ffffff;
+    --primaryButtonsBackground: #000000;
+    --primaryBGText: #ffffff;
+    --hoverPrimaryButtons: #242424;
+    --hoverPrimaryBGText: #eeeeee;
+    --primaryLINKScolor: #007aff;
+    --primaryInfoFrame: #F0EEE6;
+}
+
+body {
+    background: var(--primaryBackground);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.container {
+    background: var(--primaryBackground);
+    border-radius: 6px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.060);
+    width: 100%;
+    max-width: 300px;
+}
+
+.logo {
+    margin-bottom: 1.25rem;
+}
+
+.logo h1 {
+    color: var(--primaryTextBG);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    font-family: "source serif 4", serif;
+    font-size: 30px;
+}
+
+.form {
+    display: none;
+}
+
+.form.active {
+    display: block;
+}
+
+.input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1.5px solid var(--primaryFormBorder);
+    border-radius: 8px;
+    font-size: 0.925rem;
+    margin-bottom: 1.25rem;
+    transition: border-color 0.2s;
+    background-color: var(--primaryFormBG);
+    transition: ease 0.3s all;
+}
+
+.input:focus {
+    outline: none;
+    filter: brightness(90%);
+}
+
+.btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--primaryButtonsBackground);
+    color: var(--primaryBGText);
+    border: none;
+    border-radius: 100vmax;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background 0.2s;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus {
+    background: var(--hoverPrimaryButtons);
+    color: var(--hoverPrimaryBGText);
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover,
+.btn-danger:active,
+.btn-danger:focus {
+    background: #c82333;
+    color: white;
+}
+
+.link {
+    text-align: center;
+    color: #8e8e93;
+    font-size: 0.9rem;
+}
+
+.link a {
+    color: var(--primaryLINKScolor);
+    text-decoration: none;
+}
+
+.dashboard {
+    display: none;
+    text-align: center;
+}
+
+.dashboard.active {
+    display: block;
+}
+
+.user-card {
+    background: var(--primaryInfoFrame);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.user-card h2 {
+    color: #1d1d1f;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    letter-spacing: -0.7px;
+}
+
+.user-info {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--primaryRegularText);
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+nav.active {
+    opacity: 1;
+}
+
+.navbarContent {
+    height: 60px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem 1.5rem;
+    background: var(--primaryBackground);
+}
+
+#navbarUser {
+    font-size: 18px;
+    letter-spacing: -0.7px;
+}
+
+#navbarSignOut {
+    border-radius: 100vmax;
+    padding: 0.5rem 1rem;
+    background: var(--primaryButtonsBackground);
+    color: var(--primaryBGText);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#navbarSignOut:hover {
+    background: var(--hoverPrimaryButtons);
+}
+
+.input-group {
+    position: relative;
+}
+
+.strength-indicator {
+    height: 4px;
+    background: var(--primaryFormBorder);
+    border-radius: 2px;
+    margin: -1rem 0 1.25rem 0;
+    overflow: hidden;
+    transform: translateY(7px);
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.strength-weak {
+    background: #ff6b6b;
+    width: 25%;
+}
+
+.strength-fair {
+    background: #ffa500;
+    width: 50%;
+}
+
+.strength-good {
+    background: #4facfe;
+    width: 75%;
+}
+
+.strength-strong {
+    background: #00d4aa;
+    width: 100%;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primaryButtonsBackground);
+    color: var(--primaryBGText);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 0 auto 1rem;
+    text-transform: uppercase;
+}
+
+.loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* shake animation moved to alerts.css */
+
+/* ลบ CSS ที่ซ้ำกันออกเพราะมีใน alerts.css แล้ว */
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+}
+
+.info-label {
+    font-weight: 500;
+    color: var(--primaryRegularText);
+}
+
+@media (max-width: 480px) {
+    .container {
+        max-width: 280px;
+        padding: 1rem;
+    }
+
+    .navbarContent {
+        padding: 0 1rem;
+    }
+}

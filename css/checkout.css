@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+:root {
+    --background: #f8f9fa;
+    --text-color: #212529;
+    --primary-color: #084298;
+    --accent-color: #11735b;
+    --hover-color: #38d9a9;
+    --card-color: #ffffff;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: "Roboto", Sans-Serif;
+}
+
+body {
+    background: var(--background);
+    width: 100%;
+    
+}
+.checkout-header {
+    display: flex;
+    justify-content: space-between;
+    
+    align-items: center;
+    padding: 1.25rem 7%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    background-color: rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid goldenrod;
+    
+}
+
+/* Logo Group (Left-aligned) */
+
+.logo a {
+    font-size: 1.2rem;
+    font-family: "Orbitron", sans-serif;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.logo a span {
+    color: var(--accent-color);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Search Bar (Centered) */
+ .header-title h1{
+    font-size: 2.5rem;
+    color: #323232;
+}
+.menu-toggle{
+  display: none;
+}
+
+
+/* main section */
+main{
+  margin-top: 100px;
+  display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    padding: 1.25rem 7%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+main .order-summary .title,main .payment-summary .title{
+  font-size: 2.5rem;
+}
+main .order-summary, .payment-summary{
+  background: var(--card-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+      padding: 15px;
+    border-radius: 8px;
+}
+main .order-summary .order-item{
+  display: flex;
+   align-items: center;
+  border-top: 1px solid gray;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+    border-radius: 8px;
+  background: var(--card-color); */
+}
+.grid-content .product-heading{
+  font-size: 1rem;
+  letter-spacing: 2px;
+  margin-bottom: 7px;
+  color: var(--text-color);
+}
+main .order-summary h1{
+  margin-bottom: 20px;
+}
+main .order-summary .order-item{
+  padding: 20px 0;
+  display: flex;
+justify-content: space-between;
+}
+main .order-summary .order-item img{
+  width: 70px;
+  height: 80px;
+  object-fit: cover;
+  object-position: center;
+}
+main .order-summary .grid-content{
+  margin-top: 20px;
+}
+
+.order-summary .product-price{
+  margin-top: 15px;
+  font-size: 13px;
+}
+.quantity-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    width: 25px;
+    padding: 4px 0;
+    box-shadow: 0 0 5pxt rgba(0,0,0,0.1);
+    background: white;
+    margin: 10px 0;
+}
+
+.quantity-selector button {
+    background: none;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 2px 0;
+    color: #333;
+}
+
+.quantity {
+    margin: 4px 0;
+    font-weight: bold;
+    font-size: 13px;
+}
+.payment-summary {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+  padding: 15px;
+  background: var(--card-color);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 1rem;
+  color: var(--text-color);
+  border-bottom: 1px solid #ddd;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.summary-item.total {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+h1,
+h2,
+h3 {
+    color: var(--primary-color);
+}
+footer {
+
+    background: var(--text-color);
+
+    color: white;
+
+    padding: 50px 7% 20px;
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.footer h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+}
+
+.contact-list {
+    list-style: none;
+}
+
+.contact-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-list i {
+    color: var(--accent-color);
+    width: 20px;
+}
+
+.contact-list a {
+    color: white;
+    text-decoration: none;
+}
+
+.service-content p,
+.support-content a {
+    margin-bottom: 10px;
+    color: #ccc;
+    text-decoration: none;
+}
+
+.follow {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 30px;
+}
+
+.follow h1 {
+    font-size: 2rem;
+    font-family: "Orbitron", sans-serif;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.follow h1 span {
+  font-size: 2.3rem;
+    color: var(--accent-color);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icons a {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: var(--hover-color);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    padding: 20px;
+    background: var(--text-color);
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+.checkout-header {
+        padding: 1rem;
+    }
+
+    .checkout-header .header-title h1{
+        font-size: 1.3rem;
+    }
+
+    .checkout-header .logo a{
+      font-size: 0.8rem;
+    }
+
+    .checkout-header .logo span {
+        font-size: 1rem;
+    }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 5;
+}
+
+.overlay.show {
+  display: block;
+}
+main{
+  margin-top:80px;
+  padding: 1.25rem 3% !important;
+}
+main .order-summary .title,main .payment-summary .title{
+  font-size: 1.5rem;
+}
+
+    .heading {
+        text-align: center;
+        font-size: 2rem;
+        padding: 30px 3%;
+    }
+    
+
+    .footer {
+
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .social-icons {
+        gap: 15px;
+    }
+
+    .social-icons a {
+        width: 40px;
+        height: 40px;
+    }
+
+}
