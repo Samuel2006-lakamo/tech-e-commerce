@@ -203,7 +203,25 @@ const createProductCardHTML = (product) => {
     </div>  
   `;
 };
-
+let cartHtml = '';
+const generateCart = function() {
+  cart.forEach((item) => {
+    cartHtml += `
+                    <div class="order-item">
+            <img src="" alt="Product">
+            <div class="grid-content">
+                <h2 class="product-heading">Laptop</h2>
+                <h3 class="product-price">€ 23.55</h3>
+            </div>
+            <div class="quantity-selector">
+                <button>-</button>
+                <span class="quantity">1</span>
+                <button>+</button>
+            </div>
+        </div>
+    `
+  });
+}
 /**
  * @param {Array} products
  */
@@ -365,7 +383,7 @@ const setCurrentYear = () => {
     yearElement.textContent = new Date().getFullYear();
   }
 };
-/*document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const quantitySelectors = document.querySelectorAll(".quantity-selector");
 
     quantitySelectors.forEach(selector => {
@@ -387,7 +405,7 @@ const setCurrentYear = () => {
             quantityDisplay.textContent = quantity;
         });
     });
-});*/
+});
 const init = () => {
   initAuthGuard();
   setCurrentYear();
