@@ -1,5 +1,5 @@
 import { getProducts, productId } from "./products.js";
-import { cart, itemExist, addToCart as addToCartFunction } from "./cart.js";
+import { cart, itemExist, addToCart as addToCartFunction,renderCart } from "./cart.js";
 
 import { store, jwt, logout as logoutUser } from "./login.js";
 import { initAuthGuard } from "./auth-guard.js";
@@ -292,13 +292,18 @@ const toggleSidebar = (show) => {
 };
 
 const initializeSidebarListeners = () => {
-  menuBtn.addEventListener("click", () => {
+  if (menuBtn) {
+    menuBtn.addEventListener("click", () => {
     toggleSidebar(true);
   });
-
-  close.addEventListener("click", () => {
+  }
+  
+if (close) {
+    close.addEventListener("click", () => {
     toggleSidebar(false);
   });
+}
+
 };
 
 const initializeTouchListeners = () => {
@@ -385,8 +390,8 @@ const setCurrentYear = () => {
 };
 document.addEventListener("DOMContentLoaded", () => {
     const quantitySelectors = document.querySelectorAll(".quantity-selector");
-
-    quantitySelectors.forEach(selector => {
+if (quantitySelectors) {
+  quantitySelectors.forEach(selector => {
         const decreaseBtn = selector.querySelector("button:first-child");
         const increaseBtn = selector.querySelector("button:last-child");
         const quantityDisplay = selector.querySelector(".quantity");
@@ -405,11 +410,17 @@ document.addEventListener("DOMContentLoaded", () => {
             quantityDisplay.textContent = quantity;
         });
     });
+}
+    
 });
 const init = () => {
   initAuthGuard();
   setCurrentYear();
-
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.location.pathname.includes("checkout.html")) {
+    renderCart();
+  }
+});
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('login') === 'success') {
     console.log('Login success parameter detected');
