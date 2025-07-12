@@ -1,5 +1,5 @@
 import { getProducts, productId } from "./products.js";
-import { cart, itemExist, addToCart as addToCartFunction,renderCart } from "./cart.js";
+import { cart, itemExist, addToCart as addToCartFunction,renderCart, updateQuantity} from "./cart.js";
 
 import { store, jwt, logout as logoutUser } from "./login.js";
 import { initAuthGuard } from "./auth-guard.js";
@@ -416,6 +416,7 @@ if (quantitySelectors) {
 const init = () => {
   initAuthGuard();
   setCurrentYear();
+  updateQuantity();
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname.includes("checkout.html")) {
     renderCart();

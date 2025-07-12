@@ -89,6 +89,56 @@ export function getCartTotal() {
 export function getCartItemCount() {
     return cart.reduce((count, item) => count + item.quantity, 0);
 }
+export function updateQuantity() {
+  const orderItems = document.querySelectorAll(".order-item");
+  if (!orderItems) return;
+
+  orderItems.forEach((itemEl, index) => {
+    const minusBtn = itemEl.querySelector(".quantity-selector button:first-child");
+    const plusBtn = itemEl.querySelector(".quantity-selector button:last-child");
+    const quantityDisplay = itemEl.querySelector(".quantity");
+
+    minusBtn.addEventListener("click", () => {
+      if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+        quantityDisplay.textContent = cart[index].quantity;
+        saveToStorage();
+      }
+    });
+
+    plusBtn.addEventListener("click", () => {
+      cart[index].quantity++;
+      quantityDisplay.textContent = cart[index].quantity;
+      saveToStorage();
+    });
+  });
+}
+/*function updateQuantity() {
+ const orderItem = document.querySelectorAll(".order-item");
+ if (!orderItem) return;
+ parent.forEach((item,index) => {
+   const minusBtn = document.querySelector(".quantity-selector button:first-child");
+   const plusBtn = document.querySelector(".quantity-selector button:last-child");
+   const quantityArea = document.querySelector(".quantity");
+   minusBtn.addEventListener("click", () => {
+     if (cart[index].quantity > 1) {
+       cart[index].quantity--;
+       quantityArea.textContent = cart[index].quantity; 
+       saveToStorage();
+     }
+     
+   })
+   plusBtn.addEventListener("click", () => {
+     if (cart[index].quantity > 1) {
+       cart[index].quantity ++;
+       quantityArea.textContent = cart[index].quantity; 
+       saveToStorage();
+     }
+     
+   })
+ });
+ 
+}*/
 function saveToStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
