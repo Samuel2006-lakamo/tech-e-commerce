@@ -51,6 +51,9 @@ export const renderCart = function () {
     if (parent) {
       parent.innerHTML = '';
         parent.insertAdjacentHTML("beforeend", cartHtml);
+        
+        renderCartQuantity();
+        
     }
 };
 export function removeFromCart(id) {
@@ -89,20 +92,28 @@ export function getCartTotal() {
 export function getCartItemCount() {
     return cart.reduce((count, item) => count + item.quantity, 0);
 }
+export function renderCartQuantity() {
+  const cartNumber = document.querySelector(".cart-number");
+if (!cartNumber) return;
+cartNumber.innerHTML = "";
+cartNumber.textContent = `Checkout(${getCartItemCount()})`
+}
 export function updateQuantity() {
   const orderItems = document.querySelectorAll(".order-item");
-  if (!orderItems) return;
+  if (orderItems.length == 0) return;
 
   orderItems.forEach((itemEl, index) => {
     const minusBtn = itemEl.querySelector(".quantity-selector button:first-child");
     const plusBtn = itemEl.querySelector(".quantity-selector button:last-child");
     const quantityDisplay = itemEl.querySelector(".quantity");
-
+if (!minusBtn || !plusBtn || !quantityDisplay) return;
     minusBtn.addEventListener("click", () => {
+      console.log("clicked");
       if (cart[index].quantity > 1) {
         cart[index].quantity--;
         quantityDisplay.textContent = cart[index].quantity;
         saveToStorage();
+        renderCartQuantity();
       }
     });
 
@@ -110,6 +121,7 @@ export function updateQuantity() {
       cart[index].quantity++;
       quantityDisplay.textContent = cart[index].quantity;
       saveToStorage();
+      renderCartQuantity();
     });
   });
 }

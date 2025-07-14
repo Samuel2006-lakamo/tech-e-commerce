@@ -1,10 +1,11 @@
 import { getProducts, productId } from "./products.js";
-import { cart, itemExist, addToCart as addToCartFunction,renderCart, updateQuantity} from "./cart.js";
+import { cart, itemExist, addToCart as addToCartFunction,renderCart, updateQuantity,renderCartQuantity,getCartItemCount} from "./cart.js";
 
 import { store, jwt, logout as logoutUser } from "./login.js";
 import { initAuthGuard } from "./auth-guard.js";
 
 // #DEFINE Variables
+const calculatedCartQuantity = getCartItemCount();
 const added = document.querySelector(".added");
 const timeoutMap = new Map();
 
@@ -352,9 +353,8 @@ const showAddedMessage = (id, addedMessage) => {
 
 const updateCart = (matchingItem, id) => {
   addToCartFunction(matchingItem);
-
-  console.log('Cart updated:', cart);
-  console.log('Current user:', currentUser);
+renderCartQuantity();
+CartValueRender();
 };
 
 /**
@@ -413,13 +413,23 @@ if (quantitySelectors) {
 }
     
 });
+function CartValueRender() {
+  const cartValue = document.querySelector(".cart-value");
+if (!cartValue) return;
+cartValue.innerHTML ="";
+cartValue.textContent = `${calculatedCartQuantity}`
+}
+
 const init = () => {
+  CartValueRender();
   initAuthGuard();
   setCurrentYear();
   updateQuantity();
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname.includes("checkout.html")) {
     renderCart();
+    renderCartQuantity();
+    updateQuantity();
   }
 });
   const urlParams = new URLSearchParams(window.location.search);
