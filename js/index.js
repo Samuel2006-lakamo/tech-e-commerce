@@ -1,11 +1,9 @@
 import { getProducts, productId } from "./products.js";
-import { cart, itemExist, addToCart as addToCartFunction,renderCart, updateQuantity,renderCartQuantity,getCartItemCount} from "./cart.js";
-
+import { cart, itemExist, addToCart as addToCartFunction, renderCart, updateCartUi, renderCartQuantity, getCartItemCount, renderPaymentSummary } from "./cart.js";
 import { store, jwt, logout as logoutUser } from "./login.js";
 import { initAuthGuard } from "./auth-guard.js";
 
 // #DEFINE Variables
-const calculatedCartQuantity = getCartItemCount();
 const added = document.querySelector(".added");
 const timeoutMap = new Map();
 
@@ -182,7 +180,6 @@ window.confirmDeleteAccount = confirmDeleteAccount;
  * @param {Object} product
  * @returns {string}
  */
-
 const createProductCardHTML = (product) => {
   return `
     <div class="product-card">  
@@ -204,29 +201,12 @@ const createProductCardHTML = (product) => {
     </div>  
   `;
 };
-let cartHtml = '';
-const generateCart = function() {
-  cart.forEach((item) => {
-    cartHtml += `
-                    <div class="order-item">
-            <img src="" alt="Product">
-            <div class="grid-content">
-                <h2 class="product-heading">Laptop</h2>
-                <h3 class="product-price">€ 23.55</h3>
-            </div>
-            <div class="quantity-selector">
-                <button>-</button>
-                <span class="quantity">1</span>
-                <button>+</button>
-            </div>
-        </div>
-    `
-  });
-}
+
+// Removed the unused generateCart function - use renderCart from cart.js instead
+
 /**
  * @param {Array} products
  */
-
 const renderFeaturedProducts = (products) => {
   const featureProductEl = document.querySelector("#feature-product");
   if (!featureProductEl) return;
@@ -240,7 +220,6 @@ const renderFeaturedProducts = (products) => {
 /**
  * @param {Array} products
  */
-
 const renderAllProducts = (products) => {
   const allProductEl = document.querySelector("#all-product");
   if (!allProductEl) return;
@@ -279,7 +258,6 @@ const renderProducts = async () => {
 /**
  * @param {boolean} show 
  */
-
 const toggleSidebar = (show) => {
   if (show) {
     sidebar.classList.remove("hidden");
@@ -295,16 +273,15 @@ const toggleSidebar = (show) => {
 const initializeSidebarListeners = () => {
   if (menuBtn) {
     menuBtn.addEventListener("click", () => {
-    toggleSidebar(true);
-  });
+      toggleSidebar(true);
+    });
   }
   
-if (close) {
+  if (close) {
     close.addEventListener("click", () => {
-    toggleSidebar(false);
-  });
-}
-
+      toggleSidebar(false);
+    });
+  }
 };
 
 const initializeTouchListeners = () => {
@@ -331,7 +308,6 @@ const initializeTouchListeners = () => {
  * @param {string} id
  * @param {HTMLElement} addedMessage
  */
-
 const showAddedMessage = (id, addedMessage) => {
   addedMessage.classList.add("show");
 
@@ -350,11 +326,10 @@ const showAddedMessage = (id, addedMessage) => {
  * @param {Object} matchingItem 
  * @param {string} id
  */
-
 const updateCart = (matchingItem, id) => {
   addToCartFunction(matchingItem);
-renderCartQuantity();
-CartValueRender();
+  renderCartQuantity();
+  CartValueRender();
 };
 
 /**
@@ -388,50 +363,96 @@ const setCurrentYear = () => {
     yearElement.textContent = new Date().getFullYear();
   }
 };
-document.addEventListener("DOMContentLoaded", () => {
-    const quantitySelectors = document.querySelectorAll(".quantity-selector");
-if (quantitySelectors) {
-  quantitySelectors.forEach(selector => {
-        const decreaseBtn = selector.querySelector("button:first-child");
-        const increaseBtn = selector.querySelector("button:last-child");
-        const quantityDisplay = selector.querySelector(".quantity");
 
-        decreaseBtn.addEventListener("click", () => {
-            let quantity = parseInt(quantityDisplay.textContent);
-            if (quantity > 1) {
-                quantity--;
-                quantityDisplay.textContent = quantity;
-            }
-        });
+// Fixed the quantity selector logic - moved outside DOMContentLoaded and made it work with cart data
+const initializeQuantitySelectors = () => {
+  const quantitySelectors = document.querySelectorAll(".quantity-selector");
+  
+  if (quantitySelectors.length === 0) return;
+  
+  quantitySelectors.forEach((selector, index) => {
+    const decreaseBtn = selector.querySelector("button:first-child");
+    const increaseBtn = selector.querySelector("button:last-child");
+    const quantityDisplay = selector.querySelector(".quantity");
 
-        increaseBtn.addEventListener("click", () => {
-            let quantity = parseInt(quantityDisplay.textContent);
-            quantity++;
-            quantityDisplay.textContent = quantity;
-        });
-    });
-}
+    // Get the product ID from data attributes
+    const productId = decreaseBtn.dataset.id || increaseBtn.dataset.id;
     
-});
+    if (decreaseBtn && increaseBtn && quantityDisplay) {
+      decreaseBtn.addEventListener("click", () => {
+        if (productId) {
+          // Use cart functionality instead of manual DOM manipulation
+          const item = cart.find(item => item.id === productId);
+          if (item && item.quantity > 1) {
+            item.quantity--;
+            quantityDisplay.textContent = item.quantity;
+            // Update storage and UI
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCartQuantity();
+            renderPaymentSummary();
+          }
+        } else {
+          // Fallback for non-cart quantity selectors
+          let quantity = parseInt(quantityDisplay.textContent);
+          if (quantity > 1) {
+            quantity--;
+            quantityDisplay.textContent = quantity;
+          }
+        }
+      });
+
+      increaseBtn.addEventListener("click", () => {
+        if (productId) {
+          // Use cart functionality instead of manual DOM manipulation
+          const item = cart.find(item => item.id === productId);
+          if (item) {
+            item.quantity++;
+            quantityDisplay.textContent = item.quantity;
+            // Update storage and UI
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCartQuantity();
+            renderPaymentSummary();
+          }
+        } else {
+          // Fallback for non-cart quantity selectors
+          let quantity = parseInt(quantityDisplay.textContent);
+          quantity++;
+          quantityDisplay.textContent = quantity;
+        }
+      });
+    }
+  });
+};
+
 function CartValueRender() {
   const cartValue = document.querySelector(".cart-value");
-if (!cartValue) return;
-cartValue.innerHTML ="";
-cartValue.textContent = `${calculatedCartQuantity}`
+  if (!cartValue) return;
+  
+  cartValue.innerHTML = "";
+  cartValue.textContent = `${getCartItemCount()}`; // Use live count instead of cached value
 }
 
 const init = () => {
   CartValueRender();
   initAuthGuard();
   setCurrentYear();
-  updateQuantity();
-document.addEventListener("DOMContentLoaded", () => {
-  if (window.location.pathname.includes("checkout.html")) {
-    renderCart();
-    renderCartQuantity();
-    updateQuantity();
+  
+  // Check if we're on checkout page when DOM is loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.location.pathname.includes("checkout.html")) {
+        updateCartUi();
+        initializeQuantitySelectors(); // Initialize quantity selectors after cart is rendered
+      }
+    });
+  } else {
+    // DOM already loaded
+    if (window.location.pathname.includes("checkout.html")) {
+      updateCartUi();
+      initializeQuantitySelectors();
+    }
   }
-});
+  
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.get('login') === 'success') {
     console.log('Login success parameter detected');

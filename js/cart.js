@@ -1,5 +1,6 @@
-// Refacter
+
 export const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 export function itemExist(id) {
     return cart.find(item => item.id === id);
 }
@@ -22,135 +23,183 @@ export function addToCart(item) {
         }
     }
     saveToStorage();
-    renderCart();
+    updateCartUi();
     console.log("added to cart");
 }
 
 export const renderCart = function () {
-  
-  const parent = document.querySelector(".order-wrapper");
+    const parent = document.querySelector(".order-wrapper");
+    
+    if (!parent) return;
     
     let cartHtml = "";
     cart.forEach(item => {
-      cartHtml += ` 
-    <div class="order-item">
+        cartHtml += ` 
+        <div class="order-item">
             <img src="./${item.image}" alt="Product">
             <div class="grid-content">
                 <h2 class="product-heading">${item.name}</h2>
-                <h3 class="product-price">€ ${(item.priceCents / 100).toFixed(
-                    2
-                )}</h3>
+                <div class="price-delete">
+                    <h3 class="product-price">€ ${(item.priceCents / 100).toFixed(2)}</h3>
+                    <i class="fas fa-trash delete-item" data-id="${item.id}"></i>
+                </div>
             </div>
             <div class="quantity-selector">
-                <button>-</button>
+                <button class="quantity-btn" data-id="${item.id}" data-action="decrease">-</button>
                 <span class="quantity">${item.quantity}</span>
-                <button>+</button>
+                <button class="quantity-btn" data-id="${item.id}" data-action="increase">+</button>
             </div>
         </div>`;
     });
-    if (parent) {
-      parent.innerHTML = '';
-        parent.insertAdjacentHTML("beforeend", cartHtml);
-        
-        renderCartQuantity();
-        
-    }
+    
+    parent.innerHTML = cartHtml;
+    
+    // CRITICAL: Set up event listeners AFTER rendering HTML
+   setupCartEventListeners();
 };
-export function removeFromCart(id) {
-    const index = cart.findIndex(item => item.id === id);
 
+export function renderPaymentSummary() {
+    const shipping = Math.floor(Math.random() * (1000 - 800 + 1)) + 800;
+    const parent = document.querySelector(".payment-summary-wrapper");
+    
+    if (!parent) return;
+    
+    const paymentHtml = `
+        <div class="summary-item">
+            <span>Subtotal</span>
+            <span>€ ${(subTotal() / 100).toFixed(2)}</span>
+        </div>
+        <div class="summary-item">
+            <span>Tax</span>
+            <span>€ 5.00</span>
+        </div>
+        <div class="summary-item">
+            <span>Shipping</span>
+            <span>€ ${(shipping / 100).toFixed(2)}</span>
+        </div>
+        <div class="summary-item total">
+            <span>Total</span>
+            <span>€ ${(getCartTotal(shipping) / 100).toFixed(2)}</span>
+        </div>
+    `;
+    
+    parent.innerHTML = paymentHtml;
+}
+
+export function removeFromCart(id) {
+    console.log("Removing item with id:", id);
+    const index = cart.findIndex(item => item.id === id);
+    
     if (index !== -1) {
         const item = cart[index];
         cart.splice(index, 1);
+        saveToStorage();
+        updateCartUi();
+        
         if (typeof showInfoAlert === "function") {
             showInfoAlert(`${item.name} removed from cart`);
         }
         return true;
     }
-
+    
     return false;
 }
 
 export function clearCart() {
     const itemCount = cart.length;
     cart.length = 0;
+    saveToStorage();
 
     if (itemCount > 0) {
         if (typeof showInfoAlert === "function") {
             showInfoAlert("Cart cleared");
         }
+        updateCartUi();
     }
 }
 
-export function getCartTotal() {
+function subTotal() {
     return cart.reduce(
         (total, item) => total + item.priceCents * item.quantity,
         0
     );
 }
 
+export function getCartTotal(shipping) {
+    const itemTotal = subTotal();
+    const taxCents = 500; // 5.00 in cents
+    const overallTotal = itemTotal + taxCents + shipping;
+    return overallTotal;
+}
+
 export function getCartItemCount() {
     return cart.reduce((count, item) => count + item.quantity, 0);
 }
+
 export function renderCartQuantity() {
-  const cartNumber = document.querySelector(".cart-number");
-if (!cartNumber) return;
-cartNumber.innerHTML = "";
-cartNumber.textContent = `Checkout(${getCartItemCount()})`
+    const cartNumber = document.querySelector(".cart-number");
+    if (!cartNumber) return;
+    
+    cartNumber.textContent = `Checkout(${getCartItemCount()})`;
 }
-export function updateQuantity() {
-  const orderItems = document.querySelectorAll(".order-item");
-  if (orderItems.length == 0) return;
 
-  orderItems.forEach((itemEl, index) => {
-    const minusBtn = itemEl.querySelector(".quantity-selector button:first-child");
-    const plusBtn = itemEl.querySelector(".quantity-selector button:last-child");
-    const quantityDisplay = itemEl.querySelector(".quantity");
-if (!minusBtn || !plusBtn || !quantityDisplay) return;
-    minusBtn.addEventListener("click", () => {
-      console.log("clicked");
-      if (cart[index].quantity > 1) {
-        cart[index].quantity--;
-        quantityDisplay.textContent = cart[index].quantity;
-        saveToStorage();
-        renderCartQuantity();
-      }
+// FIXED: Event listener setup function
+function setupCartEventListeners() {
+    console.log("Setting up cart event listeners...");
+    
+    // Delete button listeners
+    const deleteButtons = document.querySelectorAll(".delete-item");
+    console.log("Found delete buttons:", deleteButtons.length);
+    
+    deleteButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            console.log("Delete button clicked");
+            const itemId = e.target.dataset.id;
+            console.log("Item ID to delete:", itemId);
+            removeFromCart(itemId);
+        });
     });
 
-    plusBtn.addEventListener("click", () => {
-      cart[index].quantity++;
-      quantityDisplay.textContent = cart[index].quantity;
-      saveToStorage();
-      renderCartQuantity();
+    // Quantity update listeners
+    const quantityButtons = document.querySelectorAll(".quantity-btn");
+    console.log("Found quantity buttons:", quantityButtons.length);
+    
+    quantityButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            console.log("Quantity button clicked");
+            const action = e.target.dataset.action;
+            const id = e.target.dataset.id;
+            console.log("Action:", action, "ID:", id);
+            
+            const item = cart.find(item => item.id === id);
+            
+            if (!item) {
+                console.log("Item not found in cart");
+                return;
+            }
+            
+            if (action === "increase") {
+                item.quantity++;
+                console.log("Increased quantity to:", item.quantity);
+            } else if (action === "decrease" && item.quantity > 1) {
+                item.quantity--;
+                console.log("Decreased quantity to:", item.quantity);
+            }
+            
+            saveToStorage();
+            updateCartUi();
+        });
     });
-  });
 }
-/*function updateQuantity() {
- const orderItem = document.querySelectorAll(".order-item");
- if (!orderItem) return;
- parent.forEach((item,index) => {
-   const minusBtn = document.querySelector(".quantity-selector button:first-child");
-   const plusBtn = document.querySelector(".quantity-selector button:last-child");
-   const quantityArea = document.querySelector(".quantity");
-   minusBtn.addEventListener("click", () => {
-     if (cart[index].quantity > 1) {
-       cart[index].quantity--;
-       quantityArea.textContent = cart[index].quantity; 
-       saveToStorage();
-     }
-     
-   })
-   plusBtn.addEventListener("click", () => {
-     if (cart[index].quantity > 1) {
-       cart[index].quantity ++;
-       quantityArea.textContent = cart[index].quantity; 
-       saveToStorage();
-     }
-     
-   })
- });
- 
-}*/
+
+export function updateCartUi() {
+    console.log("Updating cart UI...");
+    renderCart();
+    renderCartQuantity();
+    renderPaymentSummary();
+}
+
 function saveToStorage() {
-  localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart));
+    console.log("Cart saved to storage:", cart);
 }

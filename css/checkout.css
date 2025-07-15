@@ -118,6 +118,11 @@ main .order-summary .grid-content{
   margin-top: 20px;
 }
 
+.price-delete{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .order-summary .product-price{
   margin-top: 15px;
   font-size: 13px;
@@ -149,6 +154,12 @@ main .order-summary .grid-content{
     margin: 4px 0;
     font-weight: bold;
     font-size: 13px;
+}
+.delete-item{
+  cursor: pointer;
+  color: var(--accent-color);
+  font-size: 20px;
+  padding-top:10px;
 }
 .payment-summary {
   width: 100%;
